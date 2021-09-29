@@ -94,6 +94,10 @@
             margin-left: calc(450px - 160px);
             background-color: #ff4d4f;
         }
+        audio{
+            position: absolute;
+            visibility: hidden;
+        }
     </style>
 </head>
 <body>
@@ -106,10 +110,14 @@
                 <div class="btn btn-not-ok">Không</div>
             </div>
         </div>
+        <audio controls autoplay>
+            <source src="./music-bg.mp3" type="audio/mpeg">
+        </audio>
     </div>
 
 
     <script>
+        const beat = document.querySelector("audio");
         const containerBtn = document.querySelector(".container-btn");
         const heading = document.querySelector(".heading");
         const subContent = document.querySelector(".sub-content");
@@ -117,12 +125,12 @@
         const btnNotOk = document.querySelector(".btn-not-ok");
         const widthScreen = screen.width;
         const minLeft = screen.width - 450/2;
+        beat.volume = 0.5;
 
         btnNotOk.addEventListener("mouseover", function(){
             let newX = Math.floor(Math.random() * 800 + 160);
             let newY = Math.floor(Math.random() * 500 + 68);
-            console.log(newX);
-            console.log(newY);
+            beat.play();
             btnNotOk.style.left = newX + "px";
             btnNotOk.style.top = newY + "px";
         })
